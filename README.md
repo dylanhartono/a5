@@ -3,4 +3,4 @@ In this assignment, you'll complete the instructions **on Canvas** to demonstrat
 
 Please **edit this README.md** file to include a link to your hosted report (this will **earn you points** and make **grading easier**). When you're finished, please make sure to **submit this GitHub URL** to Canvas on time for credit.
 
-This is a link to my project: (https://info-201a-sp20.github.io/a5-dylanhartono/)[https://info-201a-sp20.github.io/a5-dylanhartono./]
+This is a link to my project: [link](https://info-201a-sp20.github.io/a5-dylanhartono./)
