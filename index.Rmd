@@ -1,0 +1,73 @@
+---
+title: "Mass Shootings in the US 2018 Analysis"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library("knitr")
+source("analysis.R")
+```
+
+
+## Summary Information
+The dataset is a compilation of Mass Shootings in the US in 2018. Throughout 2018, there were `r num_shootings` shootings. In 2018, `r lives_lost` lives were lost from mass shootings. The city most impacted by the shootings was the city with the largest number of casualties and injuries for the entire year from mass shootings. The most impacted city was `r most_impacted_city`. There were a total number of `r total_injuries` injuries in 2018 from mass shootings. The states with the most number of mass shootings were `r state_most_shootings`.
+
+
+## Summary Table
+In order to look at the data at a higher level, I aggregated the mass shootings data to group them by each month. Therefore, I can see the trends for the largest number of shootings, deaths, and injuries for every month. I made sure to keep the ordering based on the month so we can see how numbers increase or decrease.
+
+``` {r echo = FALSE}
+kable(summary_table,
+      col.names = c("Month",
+                    "Total Injuries",
+                    "Total Deaths",
+                    "Number of Shootings"))
+```
+
+Key insights from the data:
+  
+  1. There are a significantly larger number of injuries compared to deaths from mass shootings
+  
+  2. Data shows largest number of mass shootings was in June (most mass shootings happened in the summer) at 51 mass shootings
+  
+  3. Data shows that every month there had been at least more than 14 mass shootings in the US
+  
+  4. Winter months such as January, February, March, and December had generally low counts of mass shootings (22, 14, 17, 16 respectively)
+
+## Specific Information about Lakewood Washington's Nightclub Mass Shooting
+In addition, I looked specifically at one specific situation in Washington to get a better understanding of what takes place during a mass shooting. I looked up the mass shooting online as well as using some information that I gathered from the dataset. 
+
+On `r lakewood$date`, another mass shooting occured in `r lakewood$city`, `r lakewood$state`. At the address, `r lakewood$address`, officers believe that 3 shooters came in early Sunday morning. Police stated that probably [shooters shot 20 times](https://q13fox.com/2018/10/21/one-killed-three-hospitalized-in-shooting-at-lakewood-nightclub/). The shooters were in charge of killing `r lakewood$num_killed` and injuring `r lakewood$num_injured`. [Surveillance footage](https://www.spokesman.com/stories/2018/oct/21/one-dead-3-injured-in-washington-state-nightclub-s/) from a nearby business recorded the shooters escaping the scene in what is believed to be a vehicle. According to the [Spokesman](https://www.spokesman.com/stories/2018/oct/21/one-dead-3-injured-in-washington-state-nightclub-s/), the `r lakewood$num_injured` are expected to recover.
+
+
+## Interactive Map of Mass Shootings
+In order to better which states were impacted most from the Mass Shootings in the United States, an interactive map was made that contains markers of the places of mass shootings occurring in 2018. The size of the markers are based on the combined number of killed and injured. A pop up will show up when marker of mass shooting is clicked that contains more information about the specific place, date, number killed, and number injured.
+
+```{r echo = FALSE}
+map
+```
+
+Looking at the map, I gained insights about where most of the mass shootings tend to take place.
+
+Insights about the map:
+
+  1. Most of the shootings are on the Eastern side of the US
+  
+  2. Shootings generally occur in places where large cities would be such as San Francisco, New York, and Chicago.
+  
+  
+## Plot of Deaths and Injuries for every State with a Mass Shooting in 2018
+To me, deaths and injuries are extremely tragic and are hard to handle especially with mass shootings. A question about the dataset is "which states had experienced the most injuries/deaths from mass shootings in 2018?" I decided to make a bar plot and aggregate all those killed in each state from the dataset. It is important to note that states without shootings were not a part of the dataset and thus not part of the bar chart. Therefore, we may not have a comprehensive picture for data that is at 0. However, we can generalize the heights of the bars into groups to see the different levels of impacts.
+
+I chose a bar plot to show distinct values of the injuries/deaths for each of the states. It would allow to better see which states with the most deaths from mass shootings by seeing the highest bars. Secondly, I used a bar plot since all the values needed to be aggregated together. Rather than a scatterplot or a line plot that look at the relations between specific events, I group those with like features in a bar plot so that we get the bigger picture to answer questions about each state (rather than each event). The larger summaries allow us to make a statement about the bigger pictures.
+
+```{r echo = FALSE}
+impacts_per_state
+```
+
+Looking at the bar plot, I gained insight on states with the most deaths:
+
+  1. It looks that California, Florida, and Illinois had the largest number of deaths and injuries from mass shooting with over 150 deaths+injuries. Most deaths and injuries seem to be focused primarily in certain states
+  
+  2. Although it is easy to look at the size of the big states, there are still the many states with injuries and deaths for shootings in states with mass shootings that generally are still high around 50 total such as Ohio along with Pennsylvania being 100. In addition, there are many bars on the screen showing how many states mass shootings have taken place. That means that mass shootings have a large general impact on all Americans
